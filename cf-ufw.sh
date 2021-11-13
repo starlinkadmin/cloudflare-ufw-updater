@@ -1,7 +1,9 @@
 #!/bin/sh
 #
 #  UFW rule updater to only allow HTTP and HTTPS traffic from Cloudflare IP addresses.
-#  Readme: https://github.com/jakejarvis/cloudflare-ufw-updater/blob/master/README.md
+#  Forked from https://github.com/jakejarvis/cloudflare-ufw-updater
+#  
+#  Readme: https://github.com/starlinkadmin/cloudflare-ufw-updater/blob/master/README.md
 #
 #  Inspired by https://github.com/Paul-Reed/cloudflare-ufw/blob/master/cloudflare-ufw.sh
 #
@@ -13,6 +15,7 @@
 
 # Fetch latest IP range lists (both v4 and v6) from Cloudflare
 curl -s https://www.cloudflare.com/ips-v4 -o /tmp/cf_ips
+echo "\n" >> /tmp/cf_ips
 curl -s https://www.cloudflare.com/ips-v6 >> /tmp/cf_ips
 
 # Restrict traffic to ports 80 (TCP) & 443 (TCP)
